@@ -1,0 +1,36 @@
+﻿<Window x:Class="XFaceUpdateTool.WinSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XFaceUpdateTool"
+        mc:Ignorable="d"
+        Style="{DynamicResource ExpNoResizeWindowKey}"
+        Title="升级设置" Height="211" Width="480" Icon="Image/favicon.ico" ShowInTaskbar="False">
+    <Window.Resources>
+        <!--此处必加用于引进动态样式 部分电脑无法自动识别BaseOn资源-->
+        <Style TargetType="Button" BasedOn="{StaticResource ExpButtonKey}">
+
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="72"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="txtVersion" TextWrapping="Wrap" Text="" Margin="5" Height="25" Grid.Column="1"/>
+        <Label  Content="升级版本号："  Height="25" HorizontalAlignment="Right" Margin="0,5"/>
+        <TextBox x:Name="txtPath"  TextWrapping="NoWrap" Text="" IsReadOnly="True" Margin="5" Height="25" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="升级路径："  Height="25" Grid.Row="1" HorizontalAlignment="Right" Margin="0,5"/>
+        <Button x:Name="btnSelect" Content="选择" Grid.Column="2" Grid.Row="1" Margin="5"/>
+        <Button x:Name="btnSave" Content="保存" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" Margin="5" Width="75" Height="30"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,51 @@
+﻿<Window x:Class="XFaceUpdateTool.WinSetDevServerIp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+         Style="{DynamicResource ExpNoResizeWindowKey}"
+        Title="设置服务器IP地址" Height="130" Width="300" >
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Content="编            号："  Height="Auto" Grid.Row="0" HorizontalAlignment="Center" Margin="0,1"/>
+        <TextBox Height="Auto" x:Name="txNumber"  Grid.Column="1" Grid.Row="0" DataContext="123" IsEnabled="False" Margin="0,1"/>
+       
+        <Label Content="服务器IP地址:"  Height="Auto" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="0,5"/>
+        <Border Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" >
+                <StackPanel Orientation="Horizontal"  >
+                    <TextBox Name="ip0"  Text="" BorderThickness="0"  Width="28" TabIndex="-4"   VerticalAlignment="Center" Margin="0" TextChanged="textChange"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox  Text="." BorderThickness="0" IsReadOnly="True" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="ip1"  Text=""  BorderThickness="0" Width="28" TabIndex="-3"   VerticalAlignment="Center" Margin="0" TextChanged="textChange"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox  Text="." BorderThickness="0" IsReadOnly="True" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="ip2"  Text=""  BorderThickness="0" Width="28" TabIndex="-2"   VerticalAlignment="Center" Margin="0" TextChanged="textChange"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox  Text="."  BorderThickness="0" IsReadOnly="True" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="ip3"  Text=""  BorderThickness="0" Width="28" TabIndex="-1"   VerticalAlignment="Center" Margin="0" TextChanged="textChange"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Button x:Name="btnOk" Content="设置" Width="80" Grid.Column="0" Grid.Row="2"/>
+        <Button x:Name="btnCancle" Content="取消" Width="80" Grid.Column="1" Grid.Row="2"/>
+    </Grid>
+</Window>

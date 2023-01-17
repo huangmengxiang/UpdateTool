@@ -1,0 +1,360 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:base="clr-namespace:WPFExpress.Controls.Base">
+
+    <Style TargetType="Window" x:Key="ExpCanResizeWindowKey">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ResizeMode" Value="NoResize"></Setter>
+        <!--AllowsTransparency会影响WebBrowser显示,实现圆角-->
+        <!--<Setter Property="AllowsTransparency" Value="True"/>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource Window.Border}"/>
+        <Setter Property="Background" Value="{DynamicResource Window.Background}"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <AdornerDecorator>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                            <!--CornerRadius="6,6,0,0"-->
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="4" />
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="4" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="4" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--调节手柄-->
+                                <!--北-->
+                                <base:BorderResize x:Name="_n"  Direction="N" Grid.Column="1"  />
+                                <!--南-->
+                                <base:BorderResize  x:Name="_s"  Direction="S" Grid.Column="1" Grid.Row="3" />
+                                <!--西-->
+                                <base:BorderResize  x:Name="_w"  Direction="W" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" />
+                                <!--东-->
+                                <base:BorderResize x:Name="_e"  Direction="E" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  />
+                                <!--西北-->
+                                <base:BorderResize x:Name="_nw"  Direction="NW"/>
+                                <!--东南-->
+                                <base:BorderResize x:Name="_se"  Direction="SE" Grid.Column="2" Grid.Row="3"/>
+                                <!--东北-->
+                                <base:BorderResize x:Name="_ne"  Direction="NE" Grid.Column="2" />
+                                <!--西南-->
+                                <base:BorderResize x:Name="_sw"  Direction="SW" Grid.Column="0" Grid.Row="3"/>
+                                <!--背景加透明才能拖动，又不影响外观-->
+                                <base:WindowHeader Grid.Row="1"   Grid.Column="1" ThemeKey="CanResizeWindowKey" Background="Transparent"  />
+
+                                <!--<Rectangle StrokeThickness="0" Fill="Black"/>-->
+                                <StackPanel Grid.Row="1" Grid.Column="1" IsHitTestVisible="False" Orientation="Horizontal">
+                                    <!--图标-->
+                                    <Image  Source="{TemplateBinding Icon}" />
+                                    <TextBlock  Text="{TemplateBinding Title}" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       FontSize="{TemplateBinding FontSize}" Margin="10,5,0,5" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"  HorizontalAlignment="Right" VerticalAlignment="Top">
+
+                                    <base:MinimizedButton   x:Name="_min" Width="24" Height="24"  />
+                                    <base:MaximizedButton x:Name="_max" Width="24" Height="24"  />
+                                    <base:ClosedButton x:Name="_close" Width="24" Height="24"  />
+
+                                </StackPanel>
+                                <!--主界面统一白色-->
+                                <Grid Grid.Row="2" Grid.Column="1" >
+                                    <ContentPresenter  />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </AdornerDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter  TargetName="_n" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_s" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_w" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_e" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_nw" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_se" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_ne" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_sw" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    <Style TargetType="Window" x:Key="ExpCanMinimizeWindowKey">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ResizeMode" Value="NoResize"></Setter>
+        <!--AllowsTransparency会影响WebBrowser显示,实现圆角-->
+        <!--<Setter Property="AllowsTransparency" Value="True"/>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource Window.Border}"/>
+        <Setter Property="Background" Value="{DynamicResource Window.Background}"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <AdornerDecorator>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                            <!--CornerRadius="6,6,0,0"-->
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="4" />
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="4" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="4" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--调节手柄-->
+                                <!--北-->
+                                <base:BorderResize x:Name="_n" IsHitTestVisible="False" Direction="N" Grid.Column="1" />
+                                <!--南-->
+                                <base:BorderResize  x:Name="_s"  IsHitTestVisible="False" Direction="S" Grid.Column="1" Grid.Row="3" />
+                                <!--西-->
+                                <base:BorderResize  x:Name="_w"  IsHitTestVisible="False"  Direction="W" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" />
+                                <!--东-->
+                                <base:BorderResize x:Name="_e"  IsHitTestVisible="False" Direction="E" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  />
+                                <!--西北-->
+                                <base:BorderResize x:Name="_nw"  IsHitTestVisible="False"  Direction="NW"/>
+                                <!--东南-->
+                                <base:BorderResize x:Name="_se"  IsHitTestVisible="False" Direction="SE" Grid.Column="2" Grid.Row="3"/>
+                                <!--东北-->
+                                <base:BorderResize x:Name="_ne"  IsHitTestVisible="False"  Direction="NE" Grid.Column="2" />
+                                <!--西南-->
+                                <base:BorderResize x:Name="_sw"  IsHitTestVisible="False" Direction="SW" Grid.Column="0" Grid.Row="3"/>
+                                <!--背景加透明才能拖动，又不影响外观-->
+                                <base:WindowHeader Grid.Row="1" Grid.Column="1" ThemeKey="CanMinimizeWindowKey"  Background="Transparent" />
+
+                                <!--<Rectangle StrokeThickness="0" Fill="Black"/>-->
+                                <StackPanel Grid.Row="1" Grid.Column="1" IsHitTestVisible="False" Orientation="Horizontal">
+                                    <!--图标-->
+                                    <Image  Source="{TemplateBinding Icon}" />
+                                    <TextBlock  Text="{TemplateBinding Title}" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       FontSize="{TemplateBinding FontSize}" Margin="10,5,0,5" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"  HorizontalAlignment="Right" VerticalAlignment="Top">
+
+                                    <base:MinimizedButton   x:Name="_min" Width="24" Height="24"  />
+                                    <!--<base:MaximizedButton x:Name="_max" Width="24" Height="24"  />-->
+                                    <base:ClosedButton x:Name="_close" Width="24" Height="24"  />
+
+                                </StackPanel>
+                                <!--主界面统一白色-->
+                                <Grid Grid.Row="2" Grid.Column="1" >
+                                    <ContentPresenter  />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </AdornerDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter  TargetName="_n" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_s" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_w" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_e" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_nw" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_se" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_ne" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_sw" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Window" x:Key="ExpNoResizeWindowKey">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ResizeMode" Value="NoResize"></Setter>
+        <!--AllowsTransparency会影响WebBrowser显示,实现圆角-->
+        <!--<Setter Property="AllowsTransparency" Value="True"/>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource Window.Border}"/>
+        <Setter Property="Background" Value="{DynamicResource Window.Background}"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <AdornerDecorator>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                            <!--CornerRadius="6,6,0,0"-->
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="4" />
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="4" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="4" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--调节手柄-->
+                                <!--北-->
+                                <base:BorderResize x:Name="_n" IsHitTestVisible="False" Direction="N" Grid.Column="1" />
+                                <!--南-->
+                                <base:BorderResize  x:Name="_s" IsHitTestVisible="False"  Direction="S" Grid.Column="1" Grid.Row="3" />
+                                <!--西-->
+                                <base:BorderResize  x:Name="_w" IsHitTestVisible="False"  Direction="W" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" />
+                                <!--东-->
+                                <base:BorderResize x:Name="_e" IsHitTestVisible="False"  Direction="E" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  />
+                                <!--西北-->
+                                <base:BorderResize x:Name="_nw" IsHitTestVisible="False"  Direction="NW"/>
+                                <!--东南-->
+                                <base:BorderResize x:Name="_se" IsHitTestVisible="False"  Direction="SE" Grid.Column="2" Grid.Row="3"/>
+                                <!--东北-->
+                                <base:BorderResize x:Name="_ne" IsHitTestVisible="False"  Direction="NE" Grid.Column="2" />
+                                <!--西南-->
+                                <base:BorderResize x:Name="_sw" IsHitTestVisible="False"  Direction="SW" Grid.Column="0" Grid.Row="3"/>
+                                <!--背景加透明才能拖动，又不影响外观-->
+                                <base:WindowHeader Grid.Row="1" Grid.Column="1" ThemeKey="NoResizeWindowKey"  Background="Transparent" />
+
+                                <!--<Rectangle StrokeThickness="0" Fill="Black"/>-->
+                                <StackPanel Grid.Row="1" Grid.Column="1" IsHitTestVisible="False" Orientation="Horizontal">
+                                    <!--图标-->
+                                    <Image  Source="{TemplateBinding Icon}" />
+                                    <TextBlock  Text="{TemplateBinding Title}" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       FontSize="{TemplateBinding FontSize}" Margin="10,5,0,5" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"  HorizontalAlignment="Right" VerticalAlignment="Top">
+
+                                    <!--<base:MinimizedButton   x:Name="_min" Width="24" Height="24"  />
+                                    <base:MaximizedButton x:Name="_max" Width="24" Height="24"  />-->
+                                    <base:ClosedButton x:Name="_close" Width="24" Height="24"  />
+
+                                </StackPanel>
+                                <!--主界面统一白色-->
+                                <Grid Grid.Row="2" Grid.Column="1">
+                                    <ContentPresenter  />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </AdornerDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter  TargetName="_n" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_s" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_w" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_e" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_nw" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_se" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_ne" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_sw" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    <Style TargetType="Window" x:Key="ExpNoneWindowKey">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ResizeMode" Value="NoResize"></Setter>
+        <!--AllowsTransparency会影响WebBrowser显示,实现圆角-->
+        <!--<Setter Property="AllowsTransparency" Value="True"/>-->
+        <Setter Property="BorderBrush" Value="{DynamicResource Window.Border}"/>
+        <Setter Property="Background" Value="{DynamicResource Window.Background}"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <AdornerDecorator>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+                            <!--CornerRadius="6,6,0,0"-->
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="4" />
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="4" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="4" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--调节手柄-->
+                                <!--北-->
+                                <base:BorderResize x:Name="_n" IsHitTestVisible="False" Direction="N" Grid.Column="1" />
+                                <!--南-->
+                                <base:BorderResize  x:Name="_s" IsHitTestVisible="False"  Direction="S" Grid.Column="1" Grid.Row="3" />
+                                <!--西-->
+                                <base:BorderResize  x:Name="_w" IsHitTestVisible="False"  Direction="W" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" />
+                                <!--东-->
+                                <base:BorderResize x:Name="_e" IsHitTestVisible="False"  Direction="E" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  />
+                                <!--西北-->
+                                <base:BorderResize x:Name="_nw" IsHitTestVisible="False"  Direction="NW"/>
+                                <!--东南-->
+                                <base:BorderResize x:Name="_se" IsHitTestVisible="False"  Direction="SE" Grid.Column="2" Grid.Row="3"/>
+                                <!--东北-->
+                                <base:BorderResize x:Name="_ne" IsHitTestVisible="False"  Direction="NE" Grid.Column="2" />
+                                <!--西南-->
+                                <base:BorderResize x:Name="_sw" IsHitTestVisible="False"  Direction="SW" Grid.Column="0" Grid.Row="3"/>
+                                <!--背景加透明才能拖动，又不影响外观-->
+                                <base:WindowHeader Grid.Row="1" Grid.Column="1" ThemeKey="NoneWindowKey" Background="Transparent" />
+
+                                <!--<Rectangle StrokeThickness="0" Fill="Black"/>-->
+                                <StackPanel Grid.Row="1" Grid.Column="1" IsHitTestVisible="False" Orientation="Horizontal">
+                                    <!--图标-->
+                                    <Image  Source="{TemplateBinding Icon}" />
+                                    <TextBlock  Text="{TemplateBinding Title}" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                       FontSize="{TemplateBinding FontSize}" Margin="10,5,0,5"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"  HorizontalAlignment="Right" VerticalAlignment="Top">
+
+                                    <!--<base:MinimizedButton   x:Name="_min" Width="24" Height="24"  />
+                                    <base:MaximizedButton x:Name="_max" Width="24" Height="24"  />-->
+                                    <!--<base:ClosedButton x:Name="_close" Width="24" Height="24"  />-->
+
+                                </StackPanel>
+                                <!--主界面统一白色-->
+                                <Grid Grid.Row="2" Grid.Column="1">
+                                    <ContentPresenter  />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </AdornerDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter  TargetName="_n" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_s" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_w" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_e" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_nw" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_se" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_ne" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="_sw" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+</ResourceDictionary>

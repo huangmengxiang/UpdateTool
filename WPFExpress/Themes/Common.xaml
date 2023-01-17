@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/Window.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/Button.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/SystemInfors.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/TextBox.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/FontAwesome.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/ComboBox.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/CheckBox.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/RadioButton.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/GroupBox.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/TabControl.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/ListBox.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/ScrollBar.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/HitTextBox.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/DataGrid.xaml"/>
+        <ResourceDictionary Source="/WPFExpress;component/Controls/TreeView.xaml"/>
+
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

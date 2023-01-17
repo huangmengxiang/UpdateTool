@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--通用圆角角度-->
+    <!--<sys:Int32 x:Key="Test" >4</sys:Int32>-->
+    <CornerRadius x:Key="ExpGlobalCornerRadius">4</CornerRadius>
+</ResourceDictionary>

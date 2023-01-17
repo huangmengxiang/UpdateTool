@@ -1,0 +1,42 @@
+﻿<Border x:Class="WPFExpress.Controls.Base.BorderResize"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             x:ClassModifier="internal"
+             xmlns:base="clr-namespace:WPFExpress.Controls.Base"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" >
+    <Border.Resources>
+        <Style TargetType="{x:Type base:BorderResize}" >
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Style.Triggers>
+                <Trigger Property="Direction" Value="N">
+                    <Setter Property="Cursor" Value="SizeNS"></Setter>
+                </Trigger>
+                <Trigger Property="Direction" Value="S">
+                    <Setter Property="Cursor" Value="SizeNS"></Setter>
+                </Trigger>
+                <Trigger Property="Direction" Value="W">
+                    <Setter Property="Cursor" Value="SizeWE"></Setter>
+                </Trigger>
+                <Trigger Property="Direction" Value="E">
+                    <Setter Property="Cursor" Value="SizeWE"></Setter>
+                </Trigger>
+                <Trigger Property="Direction" Value="NW">
+                    <Setter Property="Cursor" Value="SizeNWSE"></Setter>
+                </Trigger>
+                <Trigger Property="Direction" Value="SE">
+                    <Setter Property="Cursor" Value="SizeNWSE"></Setter>
+                </Trigger>
+                <Trigger Property="Direction" Value="NE">
+                    <Setter Property="Cursor" Value="SizeNESW"></Setter>
+                </Trigger>
+                <Trigger Property="Direction" Value="SW">
+                    <Setter Property="Cursor" Value="SizeNESW"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Border.Resources>
+    <Grid />
+</Border>

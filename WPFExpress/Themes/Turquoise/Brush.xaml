@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="MouseOver.Background" Color="#FFF0EDED" ></SolidColorBrush>
+    <SolidColorBrush x:Key="MousePress.Background" Color="#FFE4E2E2" ></SolidColorBrush>
+    <SolidColorBrush x:Key="Disabled.Background" Color="#FFF4F4F4" ></SolidColorBrush>
+
+    <!--按钮样式-->
+    <SolidColorBrush x:Key="Button.Static.Border" Color="#C2C2C2" ></SolidColorBrush>
+    <LinearGradientBrush x:Key="Button.Static.Background" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="White" Offset="0"/>
+        <GradientStop Color="#EBEBEBEB" Offset="0.996"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Button.MouseOver.Background" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="White" Offset="0.003"/>
+        <GradientStop Color="#EBD1D0D0" Offset="0.996"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Button.Pressed.Background"  EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFEBEBEB" Offset="0"/>
+        <GradientStop Color="#EBD7D5D5" Offset="0.996"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+
+    <!--文本前景-->
+    <SolidColorBrush x:Key="Text.Foreground" Color="#000000" ></SolidColorBrush>
+    <!--文本背景-->
+    <SolidColorBrush x:Key="Text.Background" Color="#ffffff" ></SolidColorBrush>
+
+    <!--窗体常规-->
+    <SolidColorBrush x:Key="Window.Background" Color="#FFFBFBFB"></SolidColorBrush>
+    <SolidColorBrush x:Key="Window.Border" Color="#C2C2C2"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="Window.Foreground" Color="#000000"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="Static.HitTextColor" Color="Gray"></SolidColorBrush>
+
+</ResourceDictionary>
